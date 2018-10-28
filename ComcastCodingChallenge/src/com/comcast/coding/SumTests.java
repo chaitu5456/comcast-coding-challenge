@@ -1,13 +1,7 @@
 package com.comcast.coding;
 
 import static org.junit.Assert.*;
-
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.nio.file.NoSuchFileException;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -22,26 +16,10 @@ public class SumTests {
 	public void beforeStarting() {
 		addDigits = new AddDigits();
 	}
-	
-	//@Rule
-    //public ExpectedSystemExit exit = ExpectedSystemExit.none();
-	
+		
 	@Rule
 	public ExpectedException exceptionRule = ExpectedException.none();
 	
-//	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-//	private final PrintStream originalOut = System.out;
-//	
-//
-//	@Before
-//	public void setUpStreams() {
-//	    System.setOut(new PrintStream(outContent));
-//	}
-//	
-//	@After
-//	public void restoreStreams() {
-//	    System.setOut(originalOut);
-//	}
 	
 	@Test
 	public void testMain_Throws_Illegal_Argument_Exception(){
@@ -86,13 +64,18 @@ public class SumTests {
 		Options commandLineOptions = addDigits.parseCommandLineArgs(args);		
 		assertEquals(0, addDigits.sumOfDigits(commandLineOptions));
 	}
+	
+	@Test
+	public void sumOfDigitsTest6() {
+		String[] args = {"qq"};
+		Options commandLineOptions = addDigits.parseCommandLineArgs(args);		
+		assertEquals(0, addDigits.sumOfDigits(commandLineOptions));
+	}
 	// throws Exception
 	
 	@Test
 	public void sumOfDigitsTest_Throws_NoSuchFileFoundException() throws Exception{
 	    String[] args = {"-f", "src/daa.txt"};
-	    //exceptionRule.expect(IllegalArgumentException.class);
-	    //exceptionRule.expectMessage("Argument list is empty");
 	    Options commandLineOptions = addDigits.parseCommandLineArgs(args);		
 		addDigits.sumOfDigits(commandLineOptions);
 	}

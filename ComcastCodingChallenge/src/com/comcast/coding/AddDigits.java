@@ -76,15 +76,14 @@ public class AddDigits {
 				}
 			}
 		} catch (NoSuchFileException ex) {
-			ex.printStackTrace();
-			//throw new NoSuchFileException("Argument list is empty");
+			System.out.println("File does not exist");
+			System.exit(1);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 
-		// System.out.println("Sum of digits: " + sum);
 		return sum;
 	}
 
@@ -112,7 +111,7 @@ public class AddDigits {
 			}
 
 			if (args[0].equalsIgnoreCase("-x")) {
-				System.out.println("0");
+				System.out.println("Error: -x cannot be only argument");
 				System.exit(0);
 			}
 
