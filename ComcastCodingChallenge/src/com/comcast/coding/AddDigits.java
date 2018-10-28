@@ -23,7 +23,7 @@ public class AddDigits {
 		}
 
 		Options commandLineOptions = addDigits.parseCommandLineArgs(args);
-		System.out.println(commandLineOptions.toString());
+		//System.out.println(commandLineOptions.toString());
 
 		result = addDigits.sumOfDigits(commandLineOptions);
 		System.out.println("Sum is :" + result);
