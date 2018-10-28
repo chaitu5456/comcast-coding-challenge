@@ -3,9 +3,7 @@ package com.comcast.coding;
 import static org.junit.Assert.*;
 import java.io.IOException;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 
 public class SumTests {
@@ -16,16 +14,10 @@ public class SumTests {
 	public void beforeStarting() {
 		addDigits = new AddDigits();
 	}
-		
-	@Rule
-	public ExpectedException exceptionRule = ExpectedException.none();
-	
 	
 	@Test
-	public void testMain_Throws_Illegal_Argument_Exception(){
+	public void testMain_Throws_Illegal_Argument_Exception() throws Exception{
 	    String[] args = new String[0];
-	    exceptionRule.expect(Exception.class);
-	    exceptionRule.expectMessage("Argument list is empty");
 	    AddDigits.main(args);
 	}
 	

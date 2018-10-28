@@ -17,16 +17,16 @@ public class AddDigits {
 		int result = 0;
 		AddDigits addDigits = new AddDigits();
 		// if no arguments passed, showing result as 0
-		if (args.length == 0) {
-			System.out.println("0");
-			throw new IllegalArgumentException("Argument list is empty");
+
+		try {
+			Options commandLineOptions = addDigits.parseCommandLineArgs(args);
+			// System.out.println(commandLineOptions.toString());
+
+			result = addDigits.sumOfDigits(commandLineOptions);
+			System.out.println("Sum is :" + result);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Argument list is empty");
 		}
-
-		Options commandLineOptions = addDigits.parseCommandLineArgs(args);
-		//System.out.println(commandLineOptions.toString());
-
-		result = addDigits.sumOfDigits(commandLineOptions);
-		System.out.println("Sum is :" + result);
 
 	}
 
@@ -38,7 +38,7 @@ public class AddDigits {
 	}
 
 	// method to calculate sum of digits
-	public int sumOfDigits(Options commandLineOptions){
+	public int sumOfDigits(Options commandLineOptions) {
 
 		String inputSource = commandLineOptions.getInputSource();
 		String numberFormat = commandLineOptions.getNumberFormat();
@@ -77,7 +77,6 @@ public class AddDigits {
 			}
 		} catch (NoSuchFileException ex) {
 			System.out.println("File does not exist");
-			System.exit(1);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		} catch (Exception ex) {
@@ -101,6 +100,11 @@ public class AddDigits {
 
 	// method to generate input Options object
 	public Options parseCommandLineArgs(String args[]) {
+
+		if (args.length == 0) {
+			// System.out.println("0");
+			throw new IllegalArgumentException("Argument list is empty");
+		}
 
 		Options options = new Options("", "");
 		String numberFormat = DECIMAL;
@@ -126,8 +130,7 @@ public class AddDigits {
 
 				if (args.length > 2 && args[2].equalsIgnoreCase("-x")) {
 					numberFormat = HEXA;
-				}
-				else if(args.length > 2 && !(args[2].equalsIgnoreCase("-x"))) {
+				} else if (args.length > 2 && !(args[2].equalsIgnoreCase("-x"))) {
 					System.out.println(String.format("Error: Unknown option : %s", args[2]));
 					System.exit(1);
 				}
