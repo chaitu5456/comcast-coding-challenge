@@ -21,7 +21,7 @@ Expected: Sum is :39
 java com.comcast.coding.AddDigits -f
 Expected: Error: -f takes an argument
 
-## Compilation and Execution into IDE
+## Compilation and Execution with IDE
 1. import project to respective IDE
 2. make sure JUnit jar exists in the in the  project
 3. right click on AddDigits.java and select Run As --> Run Configurations --> go to 'Arguments' section from the pop up window
